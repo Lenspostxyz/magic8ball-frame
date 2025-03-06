@@ -29,7 +29,7 @@
 
     <script>
         function getAnswer() {
-            fetch("/api/answer")
+            fetch("api/answer")
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById("response-text").innerText = "🎱 " + data.response;
