@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic 8-Ball</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .ball-img {
+            width: 200px;
+            cursor: pointer;
+        }
+        .response {
+            font-size: 20px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎱 Ask the Magic 8-Ball</h1>
+    <p>Click the ball to reveal your fate!</p>
+    <img class="ball-img" src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Magic_eight_ball.png" onclick="getAnswer()" alt="Magic 8-Ball">
+    <p class="response" id="response-text">...</p>
+
+    <script>
+        function getAnswer() {
+            fetch("/api/answer")
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("response-text").innerText = "🎱 " + data.response;
+                });
+        }
+    </script>
+</body>
+</html>
