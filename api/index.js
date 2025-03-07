@@ -23,19 +23,21 @@ const responses = [
 
 // ✅ API for Farcaster Frame
 app.get("/frame", (req, res) => {
-  const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-  res.json({
-    image: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Magic_eight_ball.png",
-    buttons: [
-      {
-        label: "Ask the Magic 8-Ball",
-        action: "post_redirect",
-        target: "/answer"
-      }
-    ],
-    text: `🎱 The Magic 8-Ball says: "${randomResponse}"`
-  });
+    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+    res.json({
+        "frames": [
+            {
+                "image": "https://magic8ball-frame.vercel.app/8ball.png", 
+                "post_url": "https://magic8ball-frame.vercel.app/frame",
+                "buttons": [
+                    { "label": "Ask Again", "action": "post" }
+                ],
+                "text": `🎱 ${randomResponse}`
+            }
+        ]
+    });
 });
+
 
 // ✅ Serve the frontend page at `/answer`
 app.get("/answer", (req, res) => {
