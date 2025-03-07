@@ -2,7 +2,7 @@
   "version": 2,
   "routes": [
     { "src": "/frame", "dest": "/api/index.js" },
-    { "src": "/answer", "dest": "/index.html" }
+    { "src": "/answer", "dest": "/index.html" },
+    { "src": "/api/answer", "dest": "/api/index.js" }
   ]
 }
-
