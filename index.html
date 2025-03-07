@@ -29,7 +29,24 @@
 
     <script>
         function getAnswer() {
-            fetch("/api/answer")
+          function getAnswer() {
+    fetch("/api/answer")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("API request failed");
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("API Response:", data);
+            document.getElementById("response-text").innerText = "🎱 " + data.response;
+        })
+        .catch(error => {
+            console.error("Error fetching API response:", error);
+            document.getElementById("response-text").innerText = "❌ Error fetching response!";
+        });
+}
+
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById("response-text").innerText = "🎱 " + data.response;
