@@ -44,9 +44,11 @@ app.get("/answer", (req, res) => {
 
 // ✅ API to return a random answer
 app.get("/api/answer", (req, res) => {
-  const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-  res.json({ response: randomResponse });
+    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).json({ response: randomResponse });
 });
+
 
 // ✅ Start the server
 app.listen(PORT, () => {
